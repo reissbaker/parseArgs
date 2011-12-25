@@ -1,0 +1,23 @@
+{
+  "author": "Matt Baker",
+  "name": "parseArgs",
+  "description": "A fluent DSL for parsing argument objects.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/reissbaker/parseArgs.git"
+  },
+  "main": "index.js",
+	"scripts": {
+		"test": "node test/"
+	},
+  "engines": {
+    "node": ">=0.4.1"
+  },
+  "dependencies": {},
+	"devDependencies": {
+		"mocha": "0.7.1",
+    "should": "0.4.2",
+    "uglify-js": "1.2.3"
+	}
+}
