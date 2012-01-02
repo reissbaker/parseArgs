@@ -2,17 +2,21 @@
  * parseArgs v0.0.1
  * Copyright (C) 2011 Matt Baker
  * http://github.com/reissbaker
- *
+
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License at <http://www.gnu.org/licenses/> for 
- * details.
+ * GNU Lesser General Public License and GNU General Public License for 
+ * more details.
+
+ * You should have received a copy of both the GNU General Public License
+ * and the GNU Lesser General Public License along with this program.  If 
+ * not, see <http://www.gnu.org/licenses/>.
  */  
 
 
@@ -41,7 +45,7 @@
        * the accessor for the parsed arguments.
        */
 
-      args: {},
+      end: {},
 
       /**
        * declares an optional argument.
@@ -61,7 +65,7 @@
           value = curr;
         }
         
-        this.args[name] = value;
+        this.end[name] = value;
         return this;
       },
 
@@ -72,7 +76,7 @@
        */
 
       required: function(name) {
-        this.args[name] = argArray[nextToParse];
+        this.end[name] = argArray[nextToParse];
         nextToParse++;
         return this;
       },
@@ -100,13 +104,13 @@
           }
         }
         
-        this.args[name] = values;
+        this.end[name] = values;
         return this;
       }
     };
   }; 
 
-  /*
+  /**
    * Exports
    * =======
    */

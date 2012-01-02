@@ -14,7 +14,7 @@ describe('parseArgs', function() {
     it('should automatically parse the first argument', function() {
       parseArgs(fakeFullArg)
         .required('hello')
-        .args
+        .end
         .hello.should.equal('hello');
     });
 
@@ -22,7 +22,7 @@ describe('parseArgs', function() {
       var args = parseArgs(fakeFullArg)
                   .required('hello')
                   .required('next')
-                  .args;
+                  .end;
       args.hello.should.equal('hello');
       args.next.should.equal(fakeFullArg[1]);
     });
@@ -30,7 +30,7 @@ describe('parseArgs', function() {
     it('should not parse arguments that don\'t exist', function() {
       var test = parseArgs(fakeEmptyArg)
         .required('test')
-        .args
+        .end
         .test;
       (typeof test).should.equal('undefined');
     });
@@ -40,14 +40,14 @@ describe('parseArgs', function() {
     it('should parse the first argument if it passes a type check', function() {
       parseArgs(fakeFullArg)
         .optional('hello', 'fail', {type: 'string'})
-        .args
+        .end
         .hello.should.equal('hello');
     });
 
     it('should assign the default if the argument fails a type check', function() {
       parseArgs(fakeFullArg)
         .optional('hello', 'fail', {type: 'function'})
-        .args
+        .end
         .hello.should.equal('fail');
     });
 
@@ -55,7 +55,7 @@ describe('parseArgs', function() {
       parseArgs(fakeFullArg)
         .required('hello')
         .optional('obj', 'fail', {instance: Object})
-        .args
+        .end
         .obj.should.equal(fakeFullArg[1]);
     });
 
@@ -63,21 +63,21 @@ describe('parseArgs', function() {
       parseArgs(fakeFullArg)
         .required('hello')
         .optional('obj', {}, {instance: String})
-        .args
+        .end
         .obj.should.not.equal(fakeFullArg[1]);
     });
 
     it('should parse the first argument if it passes an arbitrary check function', function() {
       parseArgs(fakeFullArg)
         .optional('hello', 'fail', function(arg) { if(arg === 'hello') return true; return false;})
-        .args
+        .end
         .hello.should.equal('hello');
     });
 
     it('should assign the default if the argument fails an arbitrary check function', function() {
       parseArgs(fakeFullArg)
         .optional('hello', 'fail', function() { return false; })
-        .args
+        .end
         .hello.should.equal('fail');
     });
   });
@@ -88,7 +88,7 @@ describe('parseArgs', function() {
         .required('hello')
         .required('obj')
         .many('num', {type: 'number'})
-        .args
+        .end
         .num.should.eql([1, 2]);
     });
 
@@ -97,7 +97,7 @@ describe('parseArgs', function() {
         .required('hello')
         .required('obj')
         .many('string', {type: 'string'})
-        .args
+        .end
         .string.should.eql([]);
     });
 
@@ -107,7 +107,7 @@ describe('parseArgs', function() {
         .required('obj')
         .required('num')
         .many('string', {type: 'string'})
-        .args
+        .end
         .string.should.eql([]);
     });
 
@@ -117,7 +117,7 @@ describe('parseArgs', function() {
         .required('obj')
         .many('nums', {type: 'number'})
         .optional('callback', 'fail', {type: 'function'})
-        .args
+        .end
         .callback.should.equal(fakeFullArg[4]);
     });
   });
