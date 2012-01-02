@@ -1,5 +1,5 @@
 /**
- * parseArgs v0.0.1
+ * parseArgs v0.0.2
  * Copyright (C) 2011 Matt Baker
  * http://github.com/reissbaker
 

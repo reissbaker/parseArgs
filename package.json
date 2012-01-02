@@ -2,7 +2,7 @@
   "author": "Matt Baker",
   "name": "parseArgs",
   "description": "A fluent DSL for parsing argument objects.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/reissbaker/parseArgs.git"
